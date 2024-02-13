@@ -4,6 +4,7 @@ import {loginRequest, registerRequest, logoutRequest, productRequest} from '@/ut
 export default createStore({
     state: {
         token: localStorage.getItem('myAppToken') || '',
+        products: []
     },
     getters: {
         isAuthenticated: (state) => !!state.token,
@@ -82,6 +83,7 @@ export default createStore({
                 productRequest()
                     .then((result) => {
                         commit('GET_PRODUCTS', result.data)
+                        resolve()
                     })
             })
         },

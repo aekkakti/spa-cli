@@ -1,14 +1,21 @@
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   data() {
     return {
       products: []
     }
   },
+  computed: {
+    ...mapGetters(['getProducts']),
+    products() {
+      return this.getProducts
+    }
+  },
   mounted() {
     this.$store
         .dispatch('PRODUCTS_REQUEST')
-  this.products = this.$store.getters.GET_PRODUCTS
   },
 }
 </script>
