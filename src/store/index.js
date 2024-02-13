@@ -1,5 +1,5 @@
 import {createStore} from 'vuex';
-import {loginRequest, registerRequest, logoutRequest} from '@/utils/api.js';
+import {loginRequest, registerRequest, logoutRequest, productRequest} from '@/utils/api.js';
 
 export default createStore({
     state: {
@@ -59,7 +59,7 @@ export default createStore({
                     });
             })
         },
-        LOGOUT_REQUEST: ({ commit }, user) => {
+        LOGOUT_REQUEST: ({commit}, user) => {
             return new Promise((resolve, reject) => {
                 logoutRequest(user)
                     .then((token) => {
@@ -72,7 +72,12 @@ export default createStore({
                         reject()
                     })
             })
-        }
+        },
+        PRODUCTS_REQUEST: ({commit}, user) => {
+            return new Promise((resolve, reject) => {
+
+            })
+        },
     },
     modules: {
         }

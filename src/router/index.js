@@ -4,6 +4,9 @@ import Home from "@/components/Home.vue"
 import Login from "@/components/Login.vue"
 import Logout from "@/components/Logout.vue"
 import Register from "@/components/Register.vue"
+import Cart from "@/components/Cart.vue"
+import Products from "@/components/Products.vue"
+import Order from "@/components/Order.vue"
 
 const ifNotAuthenticated = (to, from, next) => {
   if (!store.getters.isAuthenticated) {
@@ -34,16 +37,34 @@ const routes = [
     beforeEnter: ifNotAuthenticated,
   },
   {
-    path: '/logout',
-    name: 'logout',
-    component: Logout,
-    beforeEnter: ifAuthenticated
-  },
-  {
     path: '/signup',
     name: 'signup',
     component: Register,
     beforeEnter: ifNotAuthenticated,
+  },
+  {
+    path: '/products',
+    name: 'products',
+    component: Products,
+    beforeEnter: ifNotAuthenticated
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: Cart,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order,
+    beforeEnter: ifAuthenticated
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: Logout,
+    beforeEnter: ifAuthenticated
   },
 ]
 

@@ -22,6 +22,7 @@ export default {
 button {
   border: 1px solid black;
   border-radius: 5px;
+  width: 300px;
 }
 
 </style>
