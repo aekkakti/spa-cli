@@ -1,4 +1,5 @@
 <script>
+import AUTH_REQUEST from "@/store/index.js"
 export default {
   data() {
     return {
@@ -23,13 +24,12 @@ export default {
 
 <template>
   <form class="login" @submit.prevent="login">
-    <h1>Sign in</h1>
-    <label>User name</label>
+    <h1>Авторизация</h1>
+    <label>Имя пользователя</label>
     <input type="text" required v-model="username" />
-    <label>Password</label>
-    <input type="password" required v-model="password" />
-    <hr />
-    <button type="submit">Login</button>
+    <label>Пароль</label>
+    <input type="password" required v-model="password" /> <br>
+    <button type="submit">Войти</button>
   </form>
 </template>
 
@@ -46,7 +46,5 @@ button {
   border: 1px solid black;
   border-radius: 5px;
 }
-hr {
-  margin: 10px 0;
-}
+
 </style>

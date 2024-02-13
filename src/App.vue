@@ -1,7 +1,9 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/login">Login</router-link>
+    <router-link to="/">Главная</router-link> |
+    <router-link to="/login">Авторизация</router-link> |
+    <router-link to="/register">Регистрация</router-link> |
+    <router-link to="/logout">Выход</router-link>
   </nav>
   <router-view/>
 </template>

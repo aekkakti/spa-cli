@@ -16,3 +16,20 @@ export const loginRequest = (user) => {
         });
   });
 };
+
+export const registerRequest = (user) => {
+  return new Promise((resolve, reject) => {
+    fetch(`${API}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify(user),
+    })
+        .then((response) => response.json())
+        .then((result) => resolve(result.data.user_token))
+        .catch((error) => {
+          reject(error);
+        });
+  })
+}
