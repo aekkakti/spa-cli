@@ -82,7 +82,7 @@ export default createStore({
             return new Promise((resolve) => {
                 productRequest()
                     .then((result) => {
-                        commit('GET_PRODUCTS', result.data)
+                        commit('GET_PRODUCTS', result)
                         resolve()
                     })
             })

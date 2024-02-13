@@ -49,16 +49,17 @@ export const logoutRequest = (user) => {
   });
 };
 
-export const productRequest = (user) => {
+export const productRequest = () => {
   return new Promise((resolve, reject) => {
       fetch(`${API}/products`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
-        body: JSON.stringify(user),
     })
-          .then((response) => response.json())
+          .then((response) => {
+              return response.json()
+          })
           .then((result) => resolve(result.data))
           .catch((error) => {
             reject(error);

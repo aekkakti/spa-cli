@@ -1,12 +1,12 @@
 <template>
   <nav>
-    <router-link to="/">Главная</router-link> |
-    <router-link to="/login">Авторизация</router-link> |
-    <router-link to="/signup">Регистрация</router-link> |
-    <router-link to="/products">Список товаров</router-link> |
-    <router-link to="/cart">Корзина</router-link> |
-    <router-link to="/order">Оформленные заказы</router-link> |
-    <router-link to="/logout">Выход</router-link>
+    <router-link to="/">Главная | </router-link>
+    <router-link to="/login" v-if="!this.$store.getters.isAuthenticated">Авторизация | </router-link>
+    <router-link to="/signup" v-if="!this.$store.getters.isAuthenticated">Регистрация | </router-link>
+    <router-link to="/products">Список товаров | </router-link>
+    <router-link to="/cart" v-if="this.$store.getters.isAuthenticated">Корзина | </router-link>
+    <router-link to="/order" v-if="this.$store.getters.isAuthenticated">Оформленные заказы | </router-link>
+    <router-link to="/logout" v-if="this.$store.getters.isAuthenticated">Выход</router-link>
   </nav>
   <router-view/>
 </template>
@@ -27,6 +27,7 @@ nav {
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
@@ -34,4 +35,5 @@ nav a.router-link-exact-active {
 }
 </style>
 <script setup>
+import store from "@/store";
 </script>
