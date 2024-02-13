@@ -36,7 +36,7 @@ export const registerRequest = (user) => {
 
 export const logoutRequest = (user) => {
   return new Promise((resolve, reject) => {
-    fetch(`${API}/register`, {
+    fetch(`${API}/logouts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
