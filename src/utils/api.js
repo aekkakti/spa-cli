@@ -59,7 +59,7 @@ export const productRequest = (user) => {
         body: JSON.stringify(user),
     })
           .then((response) => response.json())
-          .then((result) => resolve(result.data.user_token))
+          .then((result) => resolve('SET_PRODUCTS', result.data))
           .catch((error) => {
             reject(error);
           });

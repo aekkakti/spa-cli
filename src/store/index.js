@@ -7,6 +7,7 @@ export default createStore({
     },
     getters: {
         isAuthenticated: (state) => !!state.token,
+        getProducts: state => state.products
     },
     mutations: {
         AUTH_SUCCESS: (state, token) => {
@@ -26,6 +27,9 @@ export default createStore({
         },
         LOGOUT_ERROR: (state, token) => {
             state.token = token
+        },
+        GET_PRODUCTS: (state, products) => {
+            state.products = products
         }
     },
     actions: {
@@ -73,9 +77,12 @@ export default createStore({
                     })
             })
         },
-        PRODUCTS_REQUEST: ({commit}, user) => {
-            return new Promise((resolve, reject) => {
-
+        PRODUCTS_REQUEST: ({commit}) => {
+            return new Promise((resolve) => {
+                productRequest()
+                    .then((result) => {
+                        commit('GET_PRODUCTS', result.data)
+                    })
             })
         },
     },

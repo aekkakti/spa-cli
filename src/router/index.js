@@ -46,7 +46,6 @@ const routes = [
     path: '/products',
     name: 'products',
     component: Products,
-    beforeEnter: ifNotAuthenticated
   },
   {
     path: '/cart',
