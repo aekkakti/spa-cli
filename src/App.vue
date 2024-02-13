@@ -2,7 +2,9 @@
   <nav>
     <router-link to="/">Главная</router-link> |
     <router-link to="/login">Авторизация</router-link> |
-    <router-link to="/register">Регистрация</router-link> |
+    <router-link to="/signup">Регистрация</router-link> |
+    <router-link to="cart">Корзина</router-link> |
+    <router-link to="products">Оформленные заказы</router-link> |
     <router-link to="/logout">Выход</router-link>
   </nav>
   <router-view/>

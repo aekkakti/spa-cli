@@ -1,10 +1,10 @@
 <script>
-import AUTH_REQUEST from "@/store";
+import REGISTER_REQUEST from "@/store/index.js";
 
 export default {
   data() {
     return {
-      username: "",
+      fio: "",
       email: "",
       password: "",
     };
@@ -12,14 +12,14 @@ export default {
   methods: {
     register() {
       const User = {
-        username: this.username,
+        fio: this.fio,
         email: this.email,
         password: this.password
       };
 
       this.$store
-          .dispatch(AUTH_REQUEST, User)
-          .then(() => this.$router.push("/login"));
+          .dispatch('REGISTER_REQUEST', User)
+          .then(() => this.$router.push("/"));
     }
   }
 }
@@ -29,8 +29,8 @@ export default {
 <template>
   <form class="register" @submit.prevent="register">
     <h1>Регистрация</h1>
-    <label>Имя пользователя</label>
-    <input type="text" required placeholder="user123" v-model="username"/><br>
+    <label>Фамилия Имя Отчество</label>
+    <input type="text" required placeholder="Иванов Иван Иванович" v-model="fio"/><br>
     <label>Адрес электронной почты</label>
     <input type="email" required placeholder="user123@gmail.com" v-model="email"/><br>
     <label>Пароль</label>

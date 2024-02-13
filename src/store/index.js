@@ -6,7 +6,7 @@ export default createStore({
         token: localStorage.getItem('myAppToken') || '',
     },
     getters: {
-        isAuthenticated: (state) => !!state.token || '',
+        isAuthenticated: (state) => !!state.token,
     },
     mutations: {
         AUTH_SUCCESS: (state, token) => {
@@ -37,10 +37,10 @@ export default createStore({
                         localStorage.setItem('myAppToken', token);
                         resolve();
                     })
-                    .catch(() => {
+                    .catch((error) => {
                         commit('AUTH_ERROR');
                         localStorage.removeItem('myAppToken');
-                        reject();
+                        reject(error);
                     });
             });
         },
@@ -52,14 +52,14 @@ export default createStore({
                         localStorage.setItem('myAppToken', token);
                         resolve();
                     })
-                    .catch(() => {
+                    .catch((error) => {
                         commit('REGISTER_ERROR');
                         localStorage.removeItem('myAppToken');
-                        reject();
+                        reject(error);
                     });
             })
         },
-        LOGOUT_REQUEST: ({ commit }) => {
+        LOGOUT_REQUEST: ({ commit }, user) => {
             return new Promise((resolve, reject) => {
                 logoutRequest(user)
                     .then((token) => {

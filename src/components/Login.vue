@@ -1,21 +1,22 @@
 <script>
+import store from "@/store";
 import AUTH_REQUEST from "@/store/index.js"
 export default {
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
     };
   },
   methods: {
     login() {
       const userData = {
-        username: this.username,
+        email: this.email,
         password: this.password,
       };
 
       this.$store
-          .dispatch(AUTH_REQUEST, userData)
+          .dispatch('AUTH_REQUEST', userData)
           .then(() => this.$router.push("/"));
     },
   },
@@ -24,9 +25,9 @@ export default {
 
 <template>
   <form class="login" @submit.prevent="login">
-    <h1>Авторизация</h1>
-    <label>Имя пользователя</label>
-    <input type="text" required v-model="username" />
+    <h2>Авторизация</h2>
+    <label>Почта пользователя</label>
+    <input type="email" required v-model="email" />
     <label>Пароль</label>
     <input type="password" required v-model="password" /> <br>
     <button type="submit">Войти</button>

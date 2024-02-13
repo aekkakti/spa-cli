@@ -1,10 +1,11 @@
 <script>
+import store from "@/store";
 import LOGOUT_REQUEST from "@/store/index.js"
 export default {
   methods: {
     logout() {
       this.$store
-          .dispatch(LOGOUT_REQUEST)
+          .dispatch('LOGOUT_REQUEST')
           .then(() => this.$router.push("/"));
     },
   },

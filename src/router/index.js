@@ -40,8 +40,8 @@ const routes = [
     beforeEnter: ifAuthenticated
   },
   {
-    path: '/register',
-    name: 'register',
+    path: '/signup',
+    name: 'signup',
     component: Register,
     beforeEnter: ifNotAuthenticated,
   },
