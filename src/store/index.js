@@ -6,7 +6,7 @@ export default createStore({
     token: localStorage.getItem('myAppToken') || '',
   },
   getters: {
-    isAuthenticated: (state) => !!state.token,
+    isAuthenticated: (state) => !!state.token || '',
   },
   mutations: {
     AUTH_SUCCESS: (state, token) => {
