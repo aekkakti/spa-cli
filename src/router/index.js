@@ -50,13 +50,13 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: Cart,
+    component: Cart, Products,
     beforeEnter: ifAuthenticated
   },
   {
     path: '/cart/${product.id}',
     name: 'cart/${product.id}',
-    component: Products,
+    component: Products, Cart,
     beforeEnter: ifAuthenticated
   },
   {

@@ -13,7 +13,7 @@ export default {
   },
   mounted() {
     this.$store
-        .dispatch('ADD_REQUEST')
+        .dispatch('SHOW_REQUEST')
   },
 }
 </script>
@@ -21,7 +21,7 @@ export default {
 <template>
   <h2>Ваши товары в корзине:</h2>
   <div class="userProductsCart">
-    <div v-for="product in userCart" >
+    <div class="card" v-for="product in userCart" :key="product.id" >
       <p><b>Name:</b> {{ product.name }}</p>
       <p><b>Description:</b> {{ product.description }}</p>
       <p><b>Price: </b>{{product.price}} ₽</p>
@@ -30,5 +30,16 @@ export default {
 </template>
 
 <style scoped>
+
+.userProductsCart {
+  display: grid;
+  gap: 100px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card {
+  border: 1px dashed black;
+  padding: 30px;
+}
 
 </style>

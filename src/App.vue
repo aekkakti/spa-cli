@@ -36,4 +36,5 @@ nav a.router-link-exact-active {
 </style>
 <script setup>
 import store from "@/store";
+import {showProductsRequest} from "@/utils/api";
 </script>

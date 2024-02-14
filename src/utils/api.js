@@ -84,8 +84,6 @@ export const addProductRequest = (token, product) => {
     });
 };
 
-// пока что не работает
-/*
 export const showProductsRequest = (token, product) => {
     return new Promise((resolve) => {
         fetch(`${API}/cart`, {
@@ -99,4 +97,3 @@ export const showProductsRequest = (token, product) => {
                 .then((result) => resolve(result.data))
         })
 }
-*/

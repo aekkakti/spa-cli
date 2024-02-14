@@ -103,7 +103,7 @@ export default createStore({
                 addProductRequest()
                     .then((userCart) => {
                         commit('ADD_SUCCESS', userCart)
-                        localStorage.setItem(userCart)
+                        localStorage.setItem('userCart', userCart)
                         resolve()
                     })
                     .catch((error) => {
@@ -112,6 +112,16 @@ export default createStore({
                     })
             })
         },
+        SHOW_REQUEST: ({ commit }) => {
+            return new Promise ((resolve) => {
+                showProductsRequest()
+                    .then((userCart) => {
+                        commit('SHOW_SUCCESS', userCart)
+                        localStorage.setItem('userCart', JSON.stringify(userCart))
+                        resolve()
+                    })
+            })
+        }
     },
     modules: {
         }
