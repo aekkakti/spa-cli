@@ -47,10 +47,21 @@ export default {
   padding: 10px;
   margin: 0 auto;
 }
-.register input,
+.register input{
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 button {
   border: 1px solid black;
   border-radius: 5px;
+  transition: .9s;
+}
+
+button:hover {
+  background-color: #42b983;
+  color: white;
+  cursor: pointer;
 }
 
 </style>

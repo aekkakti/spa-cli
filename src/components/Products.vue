@@ -24,8 +24,10 @@ export default {
   <h2>Все доступные продукты на данный момент: </h2><br>
   <div class="productsInfo">
     <div class="card" v-for="product in products" :key="product.id">
-      <p>Name: {{ product.name }}</p>
-      <p>Description: {{ product.description }}</p>
+      <p><b>Name:</b> {{ product.name }}</p>
+      <p><b>Description:</b> {{ product.description }}</p>
+      <p><b>Price: </b>{{product.price}} ₽</p>
+      <button class="addProduct" v-if="this.$store.getters.isAuthenticated">+</button>
     </div>
   </div>
 </template>
@@ -35,11 +37,26 @@ export default {
 .productsInfo {
   display: grid;
   gap: 100px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .card {
   border: 1px dashed black;
-  padding: 10px;
+  padding: 30px;
+}
+
+.addProduct {
+  background-color: #56b256;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  height: 50px;
+  width: 50px;
+  transition: 1s;
+}
+
+.addProduct:hover {
+  background-color: #0c4f0c;
+  cursor: pointer;
 }
 </style>

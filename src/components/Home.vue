@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <h1>Это основная страница сайта!</h1>
+    <h1>Добро пожаловать на страницу нашего магазина!</h1>
 </template>
 
 <style scoped>
