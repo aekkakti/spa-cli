@@ -34,7 +34,7 @@ export const registerRequest = (user) => {
   });
 };
 
-export const logoutRequest = (user) => {
+export const logoutRequest = () => {
   return new Promise((reject) => {
     fetch(`${API}/logout`, {
       method: 'POST',
@@ -66,3 +66,21 @@ export const productRequest = () => {
           });
   })
 }
+
+export const addProductRequest = (token, product) => {
+    console.log(product)
+    return new Promise((resolve, reject) => {
+        fetch(`${API}/cart/${product}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(user),
+        })
+            .then((response) => response.json())
+            .then((result) => resolve(result.data.user_token))
+            .catch((error) => {
+                reject(error);
+            });
+    });
+};

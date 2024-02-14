@@ -54,6 +54,12 @@ const routes = [
     beforeEnter: ifAuthenticated
   },
   {
+    path: '/cart/${product.id}',
+    name: 'cart/${product.id}',
+    component: Products,
+    beforeEnter: ifAuthenticated
+  },
+  {
     path: '/order',
     name: 'order',
     component: Order,

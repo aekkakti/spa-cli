@@ -1,7 +1,9 @@
 <script>
 import {mapGetters} from "vuex";
+import {addProductRequest} from "@/utils/api";
 
 export default {
+  methods: {addProductRequest},
   data() {
     return {
       products: []
@@ -27,7 +29,7 @@ export default {
       <p><b>Name:</b> {{ product.name }}</p>
       <p><b>Description:</b> {{ product.description }}</p>
       <p><b>Price: </b>{{product.price}} ₽</p>
-      <button class="addProduct" v-if="this.$store.getters.isAuthenticated">+</button>
+      <button class="addProduct" @click="addProductRequest($, product.id)" v-if="this.$store.getters.isAuthenticated">+</button>
     </div>
   </div>
 </template>
