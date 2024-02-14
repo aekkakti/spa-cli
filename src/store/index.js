@@ -4,13 +4,14 @@ import {loginRequest, registerRequest, logoutRequest, productRequest, addProduct
 export default createStore({
     state: {
         token: localStorage.getItem('myAppToken') || '',
+        cartToken: localStorage.getItem('userCart') || '',
         products: [],
         userCart: []
     },
     getters: {
         isAuthenticated: (state) => !!state.token,
         getProducts: state => state.products,
-        getUserProducts: state => state.userCart
+        getCartUser: state => state.cartToken
     },
     mutations: {
         AUTH_SUCCESS: (state, token) => {

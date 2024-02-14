@@ -7,9 +7,9 @@ export default {
       userCart: []
     }
   },
-  ...mapGetters(['getUserProducts']),
+  ...mapGetters(['getCartUser']),
   userCart() {
-    return this.getUserProducts
+    return this.getCartUser
   },
   mounted() {
     this.$store
@@ -21,7 +21,7 @@ export default {
 <template>
   <h2>Ваши товары в корзине:</h2>
   <div class="userProductsCart">
-    <div class="card" v-for="product in userCart" :key="product.id" >
+    <div class="card" v-for="product in userCart">
       <p><b>Name:</b> {{ product.name }}</p>
       <p><b>Description:</b> {{ product.description }}</p>
       <p><b>Price: </b>{{product.price}} ₽</p>

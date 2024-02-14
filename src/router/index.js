@@ -5,7 +5,6 @@ import Login from "@/components/Login.vue"
 import Logout from "@/components/Logout.vue"
 import Register from "@/components/Register.vue"
 import Cart from "@/components/Cart.vue"
-import Products from "@/components/Products.vue"
 import Order from "@/components/Order.vue"
 
 const ifNotAuthenticated = (to, from, next) => {
@@ -43,20 +42,9 @@ const routes = [
     beforeEnter: ifNotAuthenticated,
   },
   {
-    path: '/products',
-    name: 'products',
-    component: Products,
-  },
-  {
     path: '/cart',
     name: 'cart',
-    component: Cart, Products,
-    beforeEnter: ifAuthenticated
-  },
-  {
-    path: '/cart/${product.id}',
-    name: 'cart/${product.id}',
-    component: Products, Cart,
+    component: Cart,
     beforeEnter: ifAuthenticated
   },
   {

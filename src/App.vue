@@ -3,7 +3,6 @@
     <router-link to="/">Главная | </router-link>
     <router-link to="/login" v-if="!this.$store.getters.isAuthenticated">Авторизация | </router-link>
     <router-link to="/signup" v-if="!this.$store.getters.isAuthenticated">Регистрация | </router-link>
-    <router-link to="/products">Список товаров | </router-link>
     <router-link to="/cart" v-if="this.$store.getters.isAuthenticated">Корзина | </router-link>
     <router-link to="/order" v-if="this.$store.getters.isAuthenticated">Оформленные заказы | </router-link>
     <router-link to="/logout" v-if="this.$store.getters.isAuthenticated">Выход</router-link>
@@ -36,5 +35,4 @@ nav a.router-link-exact-active {
 </style>
 <script setup>
 import store from "@/store";
-import {showProductsRequest} from "@/utils/api";
 </script>

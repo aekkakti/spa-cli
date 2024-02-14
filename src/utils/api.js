@@ -93,7 +93,10 @@ export const showProductsRequest = (token, product) => {
                 'Authorization': `Bearer ${localStorage.getItem('myAppToken')}`
             },
         })
-                .then((response) => response.json())
+                .then((response) => {
+                    return response.json()
+                })
                 .then((result) => resolve(result.data))
         })
 }
+
