@@ -1,5 +1,5 @@
 import {createStore} from 'vuex';
-import {loginRequest, registerRequest, logoutRequest, productRequest, addProductRequest} from '@/utils/api.js';
+import {loginRequest, registerRequest, logoutRequest, productRequest, addProductRequest, showProductsRequest} from '@/utils/api.js';
 
 export default createStore({
     state: {
@@ -37,8 +37,11 @@ export default createStore({
         ADD_SUCCESS: (state, userCart) => {
             state.userCart = userCart
         },
-        ADD_ERROR: (state, userCart) => {
+        ADD_ERROR: (state) => {
             state.userCart = ''
+        },
+        SHOW_SUCCESS: (state, userCart) => {
+            state.userCart = userCart
         }
     },
     actions: {
@@ -95,21 +98,20 @@ export default createStore({
                     })
             })
         },
-        ADD_REQUEST: ({ commit}, user) => {
+        ADD_REQUEST: ({ commit}) => {
             return new Promise((resolve, reject) => {
-                addProductRequest(user)
+                addProductRequest()
                     .then((userCart) => {
                         commit('ADD_SUCCESS', userCart)
-                        localStorage.setItem('myAppToken', userCart)
+                        localStorage.setItem(userCart)
                         resolve()
                     })
                     .catch((error) => {
                         commit('ADD_ERROR')
-                        localStorage.removeItem('myAppToken')
                         reject(error)
                     })
             })
-        }
+        },
     },
     modules: {
         }

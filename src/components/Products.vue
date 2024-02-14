@@ -6,7 +6,7 @@ export default {
   methods: {addProductRequest},
   data() {
     return {
-      products: []
+      products: [],
     }
   },
   computed: {
@@ -29,7 +29,7 @@ export default {
       <p><b>Name:</b> {{ product.name }}</p>
       <p><b>Description:</b> {{ product.description }}</p>
       <p><b>Price: </b>{{product.price}} ₽</p>
-      <button class="addProduct" @click="addProductRequest($, product.id)" v-if="this.$store.getters.isAuthenticated">+</button>
+      <button class="addProduct" @click="addProductRequest(this.$store.token, product.id)" v-if="this.$store.getters.isAuthenticated">+</button>
     </div>
   </div>
 </template>

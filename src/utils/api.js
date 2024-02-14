@@ -68,19 +68,35 @@ export const productRequest = () => {
 }
 
 export const addProductRequest = (token, product) => {
-    console.log(product)
     return new Promise((resolve, reject) => {
         fetch(`${API}/cart/${product}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
+                'Authorization': `Bearer ${localStorage.getItem('myAppToken')}`
             },
-            body: JSON.stringify(user),
         })
             .then((response) => response.json())
-            .then((result) => resolve(result.data.user_token))
+            .then((result) => resolve(result.data))
             .catch((error) => {
                 reject(error);
             });
     });
 };
+
+// пока что не работает
+/*
+export const showProductsRequest = (token, product) => {
+    return new Promise((resolve) => {
+        fetch(`${API}/cart`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Authorization': `Bearer ${localStorage.getItem('myAppToken')}`
+            },
+        })
+                .then((response) => response.json())
+                .then((result) => resolve(result.data))
+        })
+}
+*/
