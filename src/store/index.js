@@ -45,7 +45,8 @@ export default createStore({
             state.userCart = userCart
         },
         DELETE_SUCCESS: (state, userCart) => {
-            state.userCart = ''
+            const i = state.userCart.map(item => item.id).indexOf(userCart)
+            state.userCart.splice(i,1)
         }
     },
     actions: {
