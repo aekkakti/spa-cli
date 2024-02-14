@@ -4,13 +4,7 @@ import {deleteProductRequest} from "@/utils/api";
 
 export default {
   methods:
-      {deleteProductRequest,
-        deleteFromCart()
-        {
-          this.$store
-              .dispatch('SHOW_REQUEST')
-        },},
-
+      {deleteProductRequest},
   data() {
     return {}
   },
@@ -21,8 +15,8 @@ export default {
     },
   },
   mounted() {
-      this.$store
-          .dispatch('SHOW_REQUEST')
+    this.$store
+        .dispatch('SHOW_REQUEST')
   },
 }
 </script>
@@ -34,7 +28,7 @@ export default {
       <p><b>Название:</b> {{ product.name }}</p>
       <p><b>Описание:</b> {{ product.description }}</p>
       <p><b>Цена: </b>{{ product.price }} ₽</p>
-      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)" v-on:click="deleteFromCart" v-if="this.$store.getters.isAuthenticated">-
+      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)" v-if="this.$store.getters.isAuthenticated">-
       </button>
     </div>
   </div>
