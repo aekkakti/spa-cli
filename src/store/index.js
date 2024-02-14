@@ -11,7 +11,7 @@ export default createStore({
     getters: {
         isAuthenticated: (state) => !!state.token,
         getProducts: state => state.products,
-        getCartUser: state => state.cartToken
+        getCartUser: state => state.userCart
     },
     mutations: {
         AUTH_SUCCESS: (state, token) => {
@@ -118,7 +118,6 @@ export default createStore({
                 showProductsRequest()
                     .then((userCart) => {
                         commit('SHOW_SUCCESS', userCart)
-                        localStorage.setItem('userCart', JSON.stringify(userCart))
                         resolve()
                     })
             })

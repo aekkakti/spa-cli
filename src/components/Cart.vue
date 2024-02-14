@@ -4,12 +4,13 @@ import {mapGetters} from "vuex";
 export default {
   data() {
     return {
-      userCart: []
     }
   },
-  ...mapGetters(['getCartUser']),
-  userCart() {
-    return this.getCartUser
+  computed: {
+    ...mapGetters(['getCartUser']),
+    userCart() {
+      return this.getCartUser
+    },
   },
   mounted() {
     this.$store
@@ -21,7 +22,7 @@ export default {
 <template>
   <h2>Ваши товары в корзине:</h2>
   <div class="userProductsCart">
-    <div class="card" v-for="product in userCart">
+    <div class="card" v-for="product in userCart" :key="product.id">
       <p><b>Name:</b> {{ product.name }}</p>
       <p><b>Description:</b> {{ product.description }}</p>
       <p><b>Price: </b>{{product.price}} ₽</p>
