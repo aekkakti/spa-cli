@@ -100,3 +100,20 @@ export const showProductsRequest = (token, product) => {
         })
 }
 
+export const deleteProductRequest = (token, product) => {
+    return new Promise((resolve, reject) => {
+        fetch(`${API}/cart/${product}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Authorization': `Bearer ${localStorage.getItem('myAppToken')}`
+            },
+        })
+            .then((response) => response.json())
+            .then((result) => resolve(result.data))
+            .catch((error) => {
+                reject(error);
+            });
+    });
+};
+

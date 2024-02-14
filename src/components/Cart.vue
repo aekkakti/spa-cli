@@ -1,10 +1,12 @@
 <script>
 import {mapGetters} from "vuex";
+import {deleteProductRequest} from "@/utils/api";
 
 export default {
+  methods:
+      {deleteProductRequest},
   data() {
-    return {
-    }
+    return {}
   },
   computed: {
     ...mapGetters(['getCartUser']),
@@ -23,9 +25,11 @@ export default {
   <h2>Ваши товары в корзине:</h2>
   <div class="userProductsCart">
     <div class="card" v-for="product in userCart" :key="product.id">
-      <p><b>Name:</b> {{ product.name }}</p>
-      <p><b>Description:</b> {{ product.description }}</p>
-      <p><b>Price: </b>{{product.price}} ₽</p>
+      <p><b>Название:</b> {{ product.name }}</p>
+      <p><b>Описание:</b> {{ product.description }}</p>
+      <p><b>Цена: </b>{{ product.price }} ₽</p>
+      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)" v-if="this.$store.getters.isAuthenticated">-
+      </button>
     </div>
   </div>
 </template>
@@ -41,6 +45,21 @@ export default {
 .card {
   border: 1px dashed black;
   padding: 30px;
+}
+
+.deleteProduct {
+  background-color: #931a1a;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  height: 50px;
+  width: 50px;
+  transition: 1s;
+}
+
+.deleteProduct:hover {
+  background-color: red;
+  cursor: pointer;
 }
 
 </style>
