@@ -1,10 +1,10 @@
 <script>
 import {mapGetters} from "vuex";
-import {deleteProductRequest} from "@/utils/api";
+import {addOrderRequest, deleteProductRequest} from "@/utils/api";
 
 export default {
   methods:
-      {deleteProductRequest},
+      {addOrderRequest, deleteProductRequest},
   data() {
     return {}
   },
@@ -28,10 +28,11 @@ export default {
       <p><b>Название:</b> {{ product.name }}</p>
       <p><b>Описание:</b> {{ product.description }}</p>
       <p><b>Цена: </b>{{ product.price }} ₽</p>
-      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)" v-if="this.$store.getters.isAuthenticated">-
-      </button>
+      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)"
+              v-if="this.$store.getters.isAuthenticated">-</button>
     </div>
-  </div>
+  </div><br>
+  <button class="makeOrder" @click="addOrderRequest(this.$store.token, this.$store.id)" v-if="this.$store.getters.isAuthenticated">Сделать заказ</button>
 </template>
 
 <style scoped>
@@ -59,6 +60,21 @@ export default {
 
 .deleteProduct:hover {
   background-color: red;
+  cursor: pointer;
+}
+
+.makeOrder {
+  background-color: #56b256;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  height: 75px;
+  width: 150px;
+  transition: 1s;
+}
+
+.makeOrder:hover {
+  background-color: #0c4f0c;
   cursor: pointer;
 }
 

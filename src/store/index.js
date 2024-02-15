@@ -5,13 +5,16 @@ export default createStore({
     state: {
         token: localStorage.getItem('myAppToken') || '',
         cartToken: localStorage.getItem('userCart') || '',
+        orderToken: localStorage.getItem('userOrder') || '',
         products: [],
-        userCart: []
+        userCart: [],
+        userOrder: []
     },
     getters: {
         isAuthenticated: (state) => !!state.token,
         getProducts: state => state.products,
-        getCartUser: state => state.userCart
+        getCartUser: state => state.userCart,
+        getOrderUser: state => state.userOrder
     },
     mutations: {
         AUTH_SUCCESS: (state, token) => {
@@ -47,7 +50,16 @@ export default createStore({
         DELETE_SUCCESS: (state, userCart) => {
             const i = state.userCart.map(item => item.id).indexOf(userCart)
             state.userCart.splice(i,1)
-        }
+        },
+        ADD_ORDER_REQUEST: (state, userOrder) => {
+            state.userOrder = userOrder
+        },
+        ADD_ORDER_ERROR: (state) => {
+            state.userOrder = ''
+        },
+        SHOW_ORDER_REQUEST: (state, userOrder) => {
+            state.userOrder = userOrder
+        },
     },
     actions: {
         AUTH_REQUEST: ({commit}, user) => {
@@ -131,6 +143,29 @@ export default createStore({
                 deleteProductRequest()
                     .then((userCart) => {
                         commit('DELETE_SUCCESS', userCart)
+                        resolve()
+                    })
+            })
+        },
+        ADD_ORDER_REQUEST: ({ commit}) => {
+            return new Promise((resolve, reject) => {
+                addProductRequest()
+                    .then((userOrder) => {
+                        commit('ADD_ORDER_REQUEST', userOrder)
+                        localStorage.setItem('userOrder', userOrder)
+                        resolve()
+                    })
+                    .catch((error) => {
+                        commit('ADD_ORDER_ERROR')
+                        reject(error)
+                    })
+            })
+        },
+        SHOW_ORDER_REQUEST: ({ commit }) => {
+            return new Promise ((resolve) => {
+                showProductsRequest()
+                    .then((userOrder) => {
+                        commit('SHOW_ORDER_REQUEST', userOrder)
                         resolve()
                     })
             })

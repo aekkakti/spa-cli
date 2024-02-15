@@ -117,3 +117,35 @@ export const deleteProductRequest = (token, product) => {
     });
 };
 
+export const addOrderRequest = (token) => {
+    return new Promise((resolve, reject) => {
+        fetch(`${API}/order`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Authorization': `Bearer ${localStorage.getItem('myAppToken')}`
+            },
+        })
+            .then((response) => response.json())
+            .then((result) => resolve(result.data))
+            .catch((error) => {
+                reject(error);
+            });
+    });
+};
+
+export const showOrdersRequest = (token, product) => {
+    return new Promise((resolve) => {
+        fetch(`${API}/order`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+                'Authorization': `Bearer ${localStorage.getItem('myAppToken')}`
+            },
+        })
+            .then((response) => {
+                return response.json()
+            })
+            .then((result) => resolve(result.data))
+    })
+}
