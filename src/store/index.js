@@ -49,8 +49,8 @@ export default createStore({
             const i = state.userCart.map(item => item.id).indexOf(userCart)
             state.userCart.splice(i,1)
         },
-        ADD_ORDER_REQUEST: (state, userOrder) => {
-            state.userOrder = userOrder
+        ADD_ORDER_REQUEST: (state, userCart) => {
+            state.userOrder.push(...userCart)
         },
         ADD_ORDER_ERROR: (state) => {
             state.userOrder = ''

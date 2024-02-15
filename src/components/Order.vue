@@ -22,9 +22,9 @@ export default {
   <h2>Ваши заказы:</h2>
   <div class="userOrders">
     <div class="card" v-for="product in userOrder" :key="product.id">
-      <p><b>Название:</b> {{ product.name }}</p>
-      <p><b>Описание:</b> {{ product.description }}</p>
-      <p><b>Цена: </b>{{ product.price }} ₽</p>
+      <p><b>ID заказа:</b> {{ product.id }}</p>
+      <p><b>ID товаров:</b> {{ product.products }}</p>
+      <p><b>Цена: </b>{{ product.order_price }} ₽</p>
     </div>
   </div><br>
 </template>
