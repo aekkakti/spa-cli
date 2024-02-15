@@ -100,7 +100,7 @@ export const showProductsRequest = () => {
         })
 }
 
-export const deleteProductRequest = (token, product) => {
+export const deleteProductRequest = (product) => {
     return new Promise((resolve, reject) => {
         fetch(`${API}/cart/${product}`, {
             method: 'DELETE',
