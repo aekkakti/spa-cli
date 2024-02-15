@@ -84,7 +84,7 @@ export const addProductRequest = (token, product) => {
     });
 };
 
-export const showProductsRequest = (token, product) => {
+export const showProductsRequest = () => {
     return new Promise((resolve) => {
         fetch(`${API}/cart`, {
             method: 'GET',

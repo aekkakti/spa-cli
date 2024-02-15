@@ -28,11 +28,10 @@ export default {
       <p><b>Название:</b> {{ product.name }}</p>
       <p><b>Описание:</b> {{ product.description }}</p>
       <p><b>Цена: </b>{{ product.price }} ₽</p>
-      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)"
-              v-if="this.$store.getters.isAuthenticated">-</button>
+      <button class="deleteProduct" @click="deleteProductRequest(this.$store.token, product.id)" v-if="this.$store.getters.isAuthenticated">-</button>
     </div>
   </div><br>
-  <button class="makeOrder" @click="addOrderRequest(this.$store.token, this.$store.id)" v-if="this.$store.getters.isAuthenticated">Сделать заказ</button>
+  <button class="makeOrder" @click="addOrderRequest(this.$store.token)" v-if="this.$store.getters.isAuthenticated">Сделать заказ</button>
 </template>
 
 <style scoped>

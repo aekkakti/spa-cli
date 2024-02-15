@@ -1,11 +1,9 @@
 import {createStore} from 'vuex';
-import {loginRequest, registerRequest, logoutRequest, productRequest, addProductRequest, showProductsRequest, deleteProductRequest} from '@/utils/api.js';
+import {loginRequest, registerRequest, logoutRequest, productRequest, addProductRequest, showProductsRequest, deleteProductRequest, showOrdersRequest} from '@/utils/api.js';
 
 export default createStore({
     state: {
         token: localStorage.getItem('myAppToken') || '',
-        cartToken: localStorage.getItem('userCart') || '',
-        orderToken: localStorage.getItem('userOrder') || '',
         products: [],
         userCart: [],
         userOrder: []
@@ -163,7 +161,7 @@ export default createStore({
         },
         SHOW_ORDER_REQUEST: ({ commit }) => {
             return new Promise ((resolve) => {
-                showProductsRequest()
+                showOrdersRequest()
                     .then((userOrder) => {
                         commit('SHOW_ORDER_REQUEST', userOrder)
                         resolve()
