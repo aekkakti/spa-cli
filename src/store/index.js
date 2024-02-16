@@ -1,5 +1,5 @@
 import {createStore} from 'vuex';
-import {loginRequest, registerRequest, logoutRequest, productRequest, addProductRequest, showProductsRequest, deleteProductRequest, showOrdersRequest} from '@/utils/api.js';
+import {loginRequest, registerRequest, logoutRequest, productRequest, addProductRequest, showProductsRequest, deleteProductRequest, showOrdersRequest, addOrderRequest} from '@/utils/api.js';
 
 export default createStore({
     state: {
@@ -147,7 +147,7 @@ export default createStore({
         },
         ADD_ORDER_REQUEST: ({ commit}) => {
             return new Promise((resolve, reject) => {
-                addProductRequest()
+                addOrderRequest()
                     .then((userOrder) => {
                         commit('ADD_ORDER_REQUEST', userOrder)
                         localStorage.setItem('userOrder', userOrder)
@@ -160,11 +160,14 @@ export default createStore({
             })
         },
         SHOW_ORDER_REQUEST: ({ commit }) => {
-            return new Promise ((resolve) => {
+            return new Promise ((resolve, reject) => {
                 showOrdersRequest()
                     .then((userOrder) => {
                         commit('SHOW_ORDER_REQUEST', userOrder)
                         resolve()
+                    })
+                    .catch(error => {
+                        reject(error.message)
                     })
             })
         },

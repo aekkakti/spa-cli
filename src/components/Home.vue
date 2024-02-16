@@ -29,7 +29,7 @@ export default {
       <p><b>Название:</b> {{ product.name }}</p>
       <p><b>Описание:</b> {{ product.description }}</p>
       <p><b>Цена: </b>{{product.price}} ₽</p>
-      <button class="addProduct" @click="addProductRequest(this.$store.token, product.id)" v-if="this.$store.getters.isAuthenticated">+</button>
+      <button class="addProduct" v-if="this.$store.getters.isAuthenticated" @click="addProductRequest(this.$store.token, product.id)" >+</button>
     </div>
   </div>
 </template>

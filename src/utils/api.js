@@ -135,7 +135,7 @@ export const addOrderRequest = (token) => {
 };
 
 export const showOrdersRequest = (token, product) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         fetch(`${API}/order`, {
             method: 'GET',
             headers: {
@@ -147,5 +147,8 @@ export const showOrdersRequest = (token, product) => {
                 return response.json()
             })
             .then((result) => resolve(result.data))
+            .catch(error => {
+                reject(error.message)
+            })
     })
 }
