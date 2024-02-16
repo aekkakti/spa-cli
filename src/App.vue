@@ -29,9 +29,15 @@ nav a {
   text-decoration: none;
 }
 
+nav a:hover {
+  transition: 1s;
+  color: #42b983;
+}
+
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
 <script setup>
 import store from "@/store";

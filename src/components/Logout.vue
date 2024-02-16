@@ -20,15 +20,17 @@ export default {
 <style scoped>
 
 button {
+  background-color: #f54b4b;
   border: 1px solid black;
   border-radius: 5px;
-  width: 200px;
-  height: 50px;
   transition: .9s;
+  color: white;
+  width: 300px;
+  font-size: 20px;
 }
 
 button:hover {
-  background-color: #42b983;
+  background-color: #ab2424;
   color: white;
   cursor: pointer;
 }

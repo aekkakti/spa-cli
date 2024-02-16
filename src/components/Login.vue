@@ -26,10 +26,10 @@ export default {
 <template>
   <form class="login" @submit.prevent="login">
     <h2>Авторизация</h2>
-    <label>Почта пользователя</label>
-    <input type="email" required v-model="email" />
-    <label>Пароль</label>
-    <input type="password" required v-model="password" /> <br>
+    <label>Почта пользователя</label><br>
+    <input type="email" required v-model="email" /><br>
+    <label>Пароль</label><br>
+    <input type="password" required v-model="password" /> <br><br>
     <button type="submit">Войти</button>
   </form>
 </template>
@@ -46,18 +46,28 @@ export default {
 .login input {
   border: 1px solid black;
   border-radius: 5px;
+  height: 60px;
+  padding-left: 5px;
+  font-size: 16px
 }
 
 button {
+  background-color: #42b983;
   border: 1px solid black;
   border-radius: 5px;
   transition: .9s;
+  color: white;
+  font-size: 20px;
 }
 
 button:hover {
-  background-color: #42b983;
+  background-color: #56b256;
   color: white;
   cursor: pointer;
+}
+
+label {
+  font-size: 20px;
 }
 
 </style>
